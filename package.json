@@ -1,6 +1,7 @@
 {
   "name": "mastarm",
   "description": "Conveyal JavaScript development toolbelt.",
+  "version": "0.1.0",
   "main": "bin/mastarm",
   "engines": {
     "node": ">=8",
