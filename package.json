@@ -67,7 +67,7 @@
     "browserify-css": "^0.14.0",
     "browserify-markdown": "2.0.1",
     "budo": "^11.3.2",
-    "caniuse-lite": "^1.0.30000885",
+    "caniuse-lite": "^1.0.30000938",
     "chokidar": "^2.0.4",
     "commander": "^2.18.0",
     "commitizen": "^2.10.1",
