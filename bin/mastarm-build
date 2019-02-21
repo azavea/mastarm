@@ -32,6 +32,10 @@ const files = util.parseEntries(
   [...commander.args, ...(get('entries') || [])],
   get('outdir')
 )
+
+console.log('mastarm build with files:')
+console.log(files)
+
 util.assertEntriesExist(files)
 const watch = get('watch')
 const opts = {
@@ -45,7 +49,12 @@ const opts = {
   watch
 }
 if (get('serve')) {
-  budo(opts)
+  logger.log('building...')
+  build(opts)
+  .then(results => {
+    logger.log('done building. serving...')
+    budo(opts)
+  })
 } else {
   build(opts)
     .then(results => {
