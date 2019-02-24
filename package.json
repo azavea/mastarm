@@ -106,6 +106,7 @@
     "postcss-safe-parser": "^4.0.1",
     "prettier-eslint-cli": "^4.7.1",
     "rimraf": "^2.6.2",
+    "sass-lint": "^1.12.1",
     "scssify": "^3.0.1",
     "slack-node": "^0.1.8",
     "this-commit": "^1.0.0",

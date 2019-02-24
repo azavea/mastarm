@@ -1,4 +1,5 @@
 #!/bin/bash
 CWD=$(dirname $0)
 
-$CWD/../node_modules/.bin/eslint --config $CWD/../lib/eslintrc.json $FILES $@
+$CWD/../node_modules/.bin/eslint --config .eslintrc.json $FILES $@
+$CWD/../node_modules/.bin/sass-lint -c .sass-lint.yml '**/*.scss' $@ -v -q
