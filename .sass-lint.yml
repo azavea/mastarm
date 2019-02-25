@@ -1,0 +1,4 @@
+files:
+  ignore:
+    - 'node_modules/**/*.scss'
+
