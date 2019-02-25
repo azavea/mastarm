@@ -32,6 +32,7 @@ const files = util.parseEntries(
   [...commander.args, ...(get('entries') || [])],
   get('outdir')
 )
+
 util.assertEntriesExist(files)
 const watch = get('watch')
 const opts = {
@@ -41,15 +42,21 @@ const opts = {
   flyle: get('flyle'),
   instrument: get('instrument'),
   minify: get('minify'),
+  outdir: get('outdir'),
   proxy: get('proxy'),
   watch
 }
 if (get('serve')) {
-  budo(opts)
+  logger.log('building...')
+  build(opts)
+    .then(results => {
+      logger.log('starting server...')
+      budo(opts)
+    })
 } else {
   build(opts)
     .then(results => {
-      logger.log('done building...')
+      logger.log('done building.')
       if (!watch) process.exit(0)
     })
     .catch(err => {
