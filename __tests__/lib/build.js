@@ -71,10 +71,11 @@ describe('build', () => {
     it('should transform', async () => {
       const [result] = await build({
         config: loadConfig(process.cwd(), null, 'development'),
-        files: [[`${mockDir}/index.css`]]
+        env: 'development',
+        files: [[`${mockDir}/index.js`], [`${mockDir}/index.css`]]
       })
 
-      const css = result.css
+      const css = result.toString()
       expect(css.indexOf('criticalClass')).toBeGreaterThan(-1)
       unminifiedCssSize = css.length
     })
@@ -82,29 +83,14 @@ describe('build', () => {
     it('should transform and minify', async () => {
       const [result] = await build({
         config: loadConfig(process.cwd(), null, 'development'),
-        files: [[`${mockDir}/index.css`]],
-        minify: true
-      })
-
-      const css = result.css
-      expect(css.indexOf('criticalClass')).toBeGreaterThan(-1)
-      expect(css.length).toBeLessThan(unminifiedCssSize)
-    })
-  })
-
-  describe('production', () => {
-    it('should transform and minify js and css at the same time', async () => {
-      const [jsResult, cssResult] = await build({
-        config: loadConfig(process.cwd(), null, 'production'),
         env: 'production',
         files: [[`${mockDir}/index.js`], [`${mockDir}/index.css`]],
         minify: true
       })
-      const transpiledString = jsResult.toString()
-      expect(transpiledString.indexOf('MockTestComponentUniqueName')).not.toBe(
-        -1
-      )
-      expect(cssResult.css.indexOf('criticalClass')).not.toBe(-1)
+
+      const css = result.toString()
+      expect(css.indexOf('criticalClass')).toBeGreaterThan(-1)
+      expect(css.length).toBeLessThan(unminifiedCssSize)
     })
   })
 })

@@ -49,9 +49,14 @@ const env = get('env') || 'development'
 const minify = get('minify')
 const buildOpts = {
   config,
-  env,
+  env: env,
   files,
-  minify
+  flyle: false,
+  instrument: false,
+  minify,
+  outdir: get('outdir'),
+  proxy: false,
+  watch: false
 }
 const cloudfront = get('cloudfront')
 const s3bucket = get('s3bucket')
