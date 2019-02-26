@@ -5,8 +5,7 @@ const path = require('path')
 const BUILD_DIR = path.join(process.cwd(), '__tests__/test-utils/tmp')
 const MOCK_DIR = path.join(process.cwd(), '__tests__/test-utils/mocks')
 const files = [
-  [`${MOCK_DIR}/index.js`, `${BUILD_DIR}/index.js`],
-  [`${MOCK_DIR}/index.css`, `${BUILD_DIR}/index.css`]
+  [`${MOCK_DIR}/index.js`, `${BUILD_DIR}/index.js`]
 ]
 
 describe('lib > push to s3', () => {
@@ -29,7 +28,12 @@ describe('lib > push to s3', () => {
     return build({
       config,
       env: 'development',
-      files
+      files,
+      instrument: false,
+      minify: false,
+      outdir: '.',
+      proxy: false,
+      watch: false
     }).then(() =>
       Promise.all(
         files.map(f => push({body: fs.readFileSync(f[0]), outfile: f[0]}))

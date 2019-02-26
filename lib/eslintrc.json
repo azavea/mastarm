@@ -11,6 +11,9 @@
     "plugin:jest/recommended"
   ],
   "parser": "babel-eslint",
+  "parserOptions": {
+    "allowImportExportEverywhere": false
+  },
   "plugins": [
     "flowtype",
     "import",
