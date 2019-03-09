@@ -14,15 +14,17 @@
     "mastarm-deploy": "bin/mastarm-deploy",
     "mastarm-flow": "bin/mastarm-flow",
     "mastarm-format": "bin/mastarm-format",
-    "mastarm-lint": "bin/mastarm-lint",
+    "mastarm-lint": "bin/mastarm-lint-js ; bin/mastarm-lint-styles",
+    "mastarm-lint-js": "bin/mastarm-lint-js",
     "mastarm-lint-messages": "bin/mastarm-lint-messages",
+    "mastarm-lint-styles": "bin/mastarm-lint-styles",
     "mastarm-prepublish": "bin/mastarm-prepublish",
     "mastarm-test": "bin/mastarm-test"
   },
   "scripts": {
     "cover": "bin/mastarm test --env test --test-environment node --coverage --coverage-paths bin",
     "flow": "bin/mastarm flow",
-    "lint": "bin/mastarm lint lib __tests__",
+    "lint": "bin/mastarm lint-js lib __tests__ ; bin/mastarm lint-styles",
     "semantic-release": "semantic-release",
     "pretest": "yarn",
     "test": "bin/mastarm lint lib __tests__ && bin/mastarm test --run-in-band --env test --test-environment node"

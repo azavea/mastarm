@@ -11,7 +11,7 @@ commander
   .command('deploy', 'Bundle & Deploy JavaScript & CSS')
   .command('flow', 'Run flow on the current directory.')
   .command('format [entries...]', 'Format JavaScript')
-  .command('lint', 'Lint JavaScript')
+  .command('lint-js', 'Lint JavaScript')
   .command(
     'lint-messages [paths...]',
     'Check existence of messages used in source code.'
@@ -20,5 +20,6 @@ commander
     'prepublish [entries...]',
     'Transpile JavaScript down to ES5 with Babel'
   )
+  .command('lint-styles', 'Lint SASS styles')
   .command('test [patterns...]', 'Run tests using Jest')
   .parse(process.argv)
