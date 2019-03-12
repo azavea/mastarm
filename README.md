@@ -25,7 +25,7 @@
 
 ## Node
 
-We pin mastarm to a specific version of node due to inconsistencies across installation and building when using multiple versions. *Node 8 is now required to run mastarm*. 
+We pin mastarm to a specific version of node due to inconsistencies across installation and building when using multiple versions. *Node 8 is now required to run mastarm*.
 
 ## Install
 
@@ -84,7 +84,7 @@ $ mastarm --help
     deploy                    Bundle & Deploy JavaScript & CSS
     flow [command]            Run flow on the current directory.
     format [entries...]       Format JavaScript
-    lint                      Lint JavaScript
+    lint                      Lint JavaScript and styles
     lint-messages [paths...]  Check existence of messages used in source code.
     prepublish [entries...]   Transpile JavaScript down to ES5 with Babel
     test [patterns...]        Run tests using Jest
@@ -175,7 +175,16 @@ $ mastarm format index.js
 
 ### `lint`
 
-Lint using [Standard](http://standardjs.com/). Everything is passed directly to [`standard-engine`](https://github.com/Flet/standard-engine).
+Lint using:
+
+- [Standard](http://standardjs.com/). Everything is passed directly to [`standard-engine`](https://github.com/Flet/standard-engine).
+
+- [Stylelint](https://stylelint.io/). All `.css`, `.scss`, and `.sass` files are
+linted.
+
+  - **NOTE:** A [`.stylelintrc` file](https://stylelint.io/user-guide/configuration/)
+is required in your project's root directory.
+
 
 ```shell
 $ mastarm lint [paths...]

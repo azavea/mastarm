@@ -1,0 +1,4 @@
+#!/bin/bash
+CWD=$(dirname $0)
+
+$CWD/../node_modules/.bin/stylelint '**/*.+(css|scss|sass)' $@
