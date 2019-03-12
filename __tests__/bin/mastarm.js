@@ -72,8 +72,17 @@ describe('mastarm cli', () => {
     })
   })
 
-  it('should run lint on a project', done => {
-    exec(`${mastarm}-lint lib --quiet`, (err, stdout, stderr) => {
+  it('should run lint-js on a project', done => {
+    exec(`${mastarm}-lint-js lib --quiet`, (err, stdout, stderr) => {
+      expect(err).toBeNull()
+      expect(stdout).toBe('')
+      expect(stderr).toBe('')
+      done()
+    })
+  })
+
+  it('should run lint-styles on a project', done => {
+    exec(`${mastarm}-lint-styles`, (err, stdout, stderr) => {
       expect(err).toBeNull()
       expect(stdout).toBe('')
       expect(stderr).toBe('')
