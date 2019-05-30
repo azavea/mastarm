@@ -101,6 +101,7 @@
     "lodash.uniq": "~4.5.0",
     "middleware-proxy": "~2.0.2",
     "mime": "~2.4.3",
+    "minify-stream": "~1.2.0",
     "mkdirp": "~0.5.1",
     "node-emoji": "~1.10.0",
     "postcss": "~7.0.16",
