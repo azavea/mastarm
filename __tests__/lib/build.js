@@ -4,6 +4,8 @@ const build = require('../../lib/build')
 const loadConfig = require('../../lib/load-config')
 const util = require('../test-utils/util.js')
 
+require('regenerator-runtime')
+
 const originalTimeout = jasmine.DEFAULT_TIMEOUT_INTERVAL
 
 describe('build', () => {
