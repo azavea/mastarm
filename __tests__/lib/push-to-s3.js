@@ -32,6 +32,7 @@ describe('lib > push to s3', () => {
       instrument: false,
       minify: false,
       outdir: '.',
+      port: false,
       proxy: false,
       watch: false
     }).then(() =>
