@@ -69,7 +69,7 @@
     "browserify": "~16.2.3",
     "browserify-css": "~0.15.0",
     "budo": "~11.6.2",
-    "caniuse-lite": "~1.0.30000975",
+    "caniuse-lite": "1.0.30000974",
     "chokidar": "~3.0.1",
     "commander": "~2.20.0",
     "commitizen": "~3.1.1",
@@ -130,7 +130,6 @@
     "semantic-release": "^15.13.16"
   },
   "resolutions": {
-    "browserslist": ">=4.6.3",
     "fstream": ">=1.0.12",
     "tar": ">=4.4.10"
   },
