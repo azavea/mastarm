@@ -22,6 +22,7 @@ describe('lib > push to s3', () => {
     const push = createPushToS3({
       config,
       env: 'development',
+      cloudfront: false,
       minify: false,
       s3bucket: 'test-bucket'
     })
@@ -29,6 +30,7 @@ describe('lib > push to s3', () => {
       config,
       env: 'development',
       files,
+      cloudfront: false,
       instrument: false,
       minify: false,
       outdir: '.',
