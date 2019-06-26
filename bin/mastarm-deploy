@@ -62,8 +62,8 @@ const cloudfront = get('cloudfront')
 const s3bucket = get('s3bucket')
 
 const pushToS3 = createPushToS3({
-  cloudfront,
-  s3bucket
+  s3bucket,
+  cloudfront
 })
 
 logger
@@ -82,14 +82,14 @@ logger
       .then(() =>
         logger.log(`:rocket: *uploading:* ${sourceFiles.length * 2} file(s)`)
       )
-      .then(() => {
+      .then(() =>
         Promise.all(
           outfiles.map(outfile =>
             readFile(outfile)
               .then(body => pushToS3({body, outfile}))
           )
         )
-      })
+      )
       .then(() =>
         logger
           .log(
