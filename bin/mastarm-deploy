@@ -2,9 +2,11 @@
 
 const path = require('path')
 
+const AWS = require('aws-sdk')
 const commander = require('commander')
 const commit = require('this-commit')()
 const username = require('username')
+const uuid = require('uuid')
 
 const build = require('../lib/build')
 const {readFile} = require('../lib/fs-promise')
@@ -90,6 +92,37 @@ logger
           )
         )
       )
+      .then(() => {
+        if (cloudfront) {
+          const cf = new AWS.CloudFront()
+          const cfbatchid = uuid.v4()
+          const cffiles = [...outfiles.map(f => `/${f}`)]
+          logger
+            .log(`:lightning: *cloudfront:* invalidating paths ${cffiles}`)
+            .then(util.delayOneSecond())
+            .then(() => {
+              cf.createInvalidation(
+                {
+                  DistributionId: cloudfront,
+                  InvalidationBatch: {
+                    CallerReference: cfbatchid,
+                    Paths: {
+                      Items: cffiles,
+                      Quantity: cffiles.length
+                    }
+                  }
+                },
+                function (err) {
+                  if (err) {
+                    logger.log(`:rotating_light: cf invalidation rejected with ${err.message}`)
+                  }
+                }
+              )
+            })
+        } else {
+
+        }
+      })
       .then(() =>
         logger
           .log(
